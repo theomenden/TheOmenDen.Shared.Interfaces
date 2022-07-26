@@ -19,6 +19,8 @@
 		<ApplicationIcon>omenden-jsonapi.ico</ApplicationIcon>
 		<RepositoryUrl>https://github.com/theomenden/TheOmenDen.Shared.Interfaces</RepositoryUrl>
 		<PackageProjectUrl>https://github.com/theomenden/TheOmenDen.Shared.Interfaces</PackageProjectUrl>
+		<PackageReadmeFile>README.md</PackageReadmeFile>
+		<RepositoryType>git</RepositoryType>
 	</PropertyGroup>
 
 	<ItemGroup>
@@ -29,6 +31,10 @@
 		<None Include="..\omen-den-jsonapi.png">
 			<Pack>True</Pack>
 			<PackagePath>\</PackagePath>
+		</None>
+		<None Include="..\README.md">
+		  <Pack>True</Pack>
+		  <PackagePath>\</PackagePath>
 		</None>
 	</ItemGroup>
 
