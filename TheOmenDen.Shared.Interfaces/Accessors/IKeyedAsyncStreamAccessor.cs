@@ -1,14 +1,14 @@
 ﻿namespace TheOmenDen.Shared.Interfaces.Accessors;
 
 /// <summary>
-/// Defines asynchronous streaming methods to allow retrival of entities matching a supplied key
+/// Defines asynchronous streaming methods to allow retrieval of entities matching a supplied key
 /// </summary>
 /// <typeparam name="TResult">The result of the operation</typeparam>
 /// <typeparam name="TEntity">The entity returned</typeparam>
 public interface IKeyedAsyncStreamAccessor<TResult, TEntity>
 {
     /// <summary>
-    /// A relatively stable retriveal operation meant to provide the caller with a per-entity result based on the provided <paramref name="key"/>
+    /// A relatively stable retrieval operation meant to provide the caller with a per-entity result based on the provided <paramref name="key"/>
     /// </summary>
     /// <typeparam name="TKey">The type of key we will be using</typeparam>
     /// <param name="key">The provided key to search under</param>
@@ -18,7 +18,7 @@ public interface IKeyedAsyncStreamAccessor<TResult, TEntity>
         where TKey : IEntityKey;
 
     /// <summary>
-    /// A relatively stable retriveal operation meant to provide the caller with a per-entity result based on the provided list of <paramref name="keys"/>
+    /// A relatively stable retrieval operation meant to provide the caller with a per-entity result based on the provided list of <paramref name="keys"/>
     /// </summary>
     /// <typeparam name="TKey">The type of key we will be using</typeparam>
     /// <param name="key">The provided key to search under</param>

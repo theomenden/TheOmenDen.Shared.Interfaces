@@ -6,7 +6,10 @@
 public interface IEntity
 {
     /// <summary>
-    /// Provides a unique identity containing various informatino regarding the underlying entity
+    /// Provides a unique identity containing various information regarding the underlying entity
     /// </summary>
+    /// <value>
+    /// <see cref="IEntityKey"/>
+    /// </value>
     IEntityKey Key { get; }
 }

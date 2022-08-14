@@ -30,7 +30,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="TheOmenDen.Shared" Version="2022.7.26.331" />
+    <PackageReference Include="TheOmenDen.Shared" Version="2022.8.13.1752" />
   </ItemGroup>
 
 </Project>
