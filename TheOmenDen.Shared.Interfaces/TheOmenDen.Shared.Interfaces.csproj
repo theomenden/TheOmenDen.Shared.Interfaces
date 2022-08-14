@@ -1,36 +1,50 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFramework>net6.0</TargetFramework>
-    <ImplicitUsings>enable</ImplicitUsings>
-    <Nullable>enable</Nullable>
-    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
-    <Copyright>2022</Copyright>
-    <Description>This package contains the interfaces that can used for various implementations, and some of the models behind them for Tenancy and User based applications.</Description>
-    <Product>The Omen Den Shared Interfaces</Product>
-    <Company>The Omen Den L.L.C.</Company>
-    <Authors>Andrew Beers (Alu)</Authors>
-    <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
-    <PackageIcon>omen-den-jsonapi.png</PackageIcon>
-    <PackageTags>csharp, dotnet6, dotnet, dotnetcore, interfaces</PackageTags>
-    <PackageReleaseNotes>Provides the basis for interfaces for various purposes</PackageReleaseNotes>
-    <ApplicationIcon>omenden-jsonapi.ico</ApplicationIcon>
-  </PropertyGroup>
+	<PropertyGroup>
+		<TargetFramework>net6.0</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+		<GenerateNuspecDependsOn>$(GenerateNuspecDependsOn);SetPackageVersion</GenerateNuspecDependsOn>
+		<Copyright>2022</Copyright>
+		<Description>This package contains the interfaces that can used for various implementations, and some of the models behind them for Tenancy and User based applications.</Description>
+		<Product>The Omen Den Shared Interfaces</Product>
+		<Company>The Omen Den L.L.C.</Company>
+		<Authors>Andrew Beers (Alu)</Authors>
+		<PackageLicenseExpression>MIT</PackageLicenseExpression>
+		<PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
+		<PackageIcon>omen-den-jsonapi.png</PackageIcon>
+		<PackageTags>csharp, dotnet6, dotnet, dotnetcore, interfaces</PackageTags>
+		<PackageReleaseNotes>Provides the basis for interfaces for various purposes</PackageReleaseNotes>
+		<ApplicationIcon>omenden-jsonapi.ico</ApplicationIcon>
+		<RepositoryUrl>https://github.com/theomenden/TheOmenDen.Shared.Interfaces</RepositoryUrl>
+		<PackageProjectUrl>https://github.com/theomenden/TheOmenDen.Shared.Interfaces</PackageProjectUrl>
+		<PackageReadmeFile>README.md</PackageReadmeFile>
+		<RepositoryType>git</RepositoryType>
+	</PropertyGroup>
 
-  <ItemGroup>
-    <Content Include="omenden-jsonapi.ico" />
-  </ItemGroup>
+	<ItemGroup>
+		<Content Include="omenden-jsonapi.ico" />
+	</ItemGroup>
 
-  <ItemGroup>
-    <None Include="..\omen-den-jsonapi.png">
-      <Pack>True</Pack>
-      <PackagePath>\</PackagePath>
-    </None>
-  </ItemGroup>
+	<ItemGroup>
+		<None Include="..\omen-den-jsonapi.png">
+			<Pack>True</Pack>
+			<PackagePath>\</PackagePath>
+		</None>
+		<None Include="..\README.md">
+		  <Pack>True</Pack>
+		  <PackagePath>\</PackagePath>
+		</None>
+	</ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="TheOmenDen.Shared" Version="2022.8.13.1752" />
   </ItemGroup>
 
+	<Target Name="SetPackageVersion" DependsOnTargets="Build">
+		<PropertyGroup>
+			<PackageVersion>$([System.DateTime]::Now.ToString("1.MM.dd.HHss"))</PackageVersion>
+		</PropertyGroup>
+	</Target>
 </Project>
