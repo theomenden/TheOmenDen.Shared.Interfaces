@@ -1,7 +1,7 @@
 ﻿namespace TheOmenDen.Shared.Interfaces.Repositories;
 
 /// <summary>
-/// <para>This interface aims to define the basic Create, Update, and Delete functionalities for entities within the domain</para>
+/// <para>This interface aims to define the basic Create, Update, and Delete functionality for entities within the domain</para>
 /// <para> By manipulating our results from a given store, a return <see cref="ValueTuple{T1, T2}"/> is possible to reflect the changes that were made</para>
 /// <para>This allows for further processing and error handling based on the results, without needing to throw exceptions</para>    
 /// <inheritdoc cref="IEnumerable{T}"/>
@@ -22,7 +22,8 @@ public interface IKeyedDataOperations<in TKey, in TValue, TEntity, TResult> : IE
     /// <param name="manipulativeValues">The values we're aiming to provide with the key</param>
     /// <param name="cancellationToken"><inheritdoc cref="CancellationToken"/></param>
     /// <returns><see cref="Tuple{T1, T2}"/>: A coupling of the result of the operation <typeparamref name="TResult"/>, and the completed object,<typeparamref name="TEntity"/></returns>
-    ValueTask<(TResult, TEntity)> AddAsync(TKey key, TValue manipulativeValues, CancellationToken cancellationToken = new());
+    /// <remarks><typeparamref name="TResult" /> will typically be a <see cref="Boolean"/> value, returning <see langword="true"/> on success, and <see langword="false"/> otherwise</remarks>
+    ValueTask<(TResult Result, TEntity Entity)> AddAsync(TKey key, TValue manipulativeValues, CancellationToken cancellationToken = new());
 
     /// <summary>
     /// An attempt at a relatively stable update operation that respects the given <paramref name="key"/>, and allows for underlying <paramref name="manipulativeValues"/> to be distinguished from the originating key.
@@ -31,7 +32,8 @@ public interface IKeyedDataOperations<in TKey, in TValue, TEntity, TResult> : IE
     /// <param name="manipulativeValues">The values we're aiming to provide with the key</param>
     /// <param name="cancellationToken"><inheritdoc cref="CancellationToken"/></param>
     /// <returns><see cref="Tuple{T1, T2}"/>: A coupling of the result of the operation <typeparamref name="TResult"/>, and the completed object,<typeparamref name="TEntity"/></returns>
-    ValueTask<(TResult, TEntity)> UpdateAsync(TKey key, TValue manipulativeValues, CancellationToken cancellationToken = new());
+    /// <remarks><typeparamref name="TResult" /> will typically be a <see cref="Boolean"/> value, returning <see langword="true"/> on success, and <see langword="false"/> otherwise</remarks>
+    ValueTask<(TResult Result, TEntity Entity)> UpdateAsync(TKey key, TValue manipulativeValues, CancellationToken cancellationToken = new());
 
     /// <summary>
     /// An attempt at a relatively stable update operation that respects the provided <paramref name="keys"/> and allows for logic to take place with the underlying <paramref name="manipulativeValues"/> to be distinguished from the originating keys.
@@ -40,7 +42,8 @@ public interface IKeyedDataOperations<in TKey, in TValue, TEntity, TResult> : IE
     /// <param name="manipulativeValues">The values we'd like to update in the objects that are referenced by the provided <paramref name="keys"/></param>
     /// <param name="cancellationToken"><inheritdoc cref="CancellationToken"/></param>
     /// <returns><see cref="IAsyncEnumerable{T}"/>: <see cref="Tuple{T1, T2}"/>: A streaming coupling of the result of the operation <typeparamref name="TResult"/>, and the completed object,<typeparamref name="TEntity"/></returns>
-    IAsyncEnumerable<(TResult, TEntity)> UpdateAsyncStream(IEnumerable<TKey> keys, IEnumerable<TValue> manipulativeValues, CancellationToken cancellationToken = new());
+    /// <remarks><typeparamref name="TResult" /> will typically be a <see cref="Boolean"/> value, returning <see langword="true"/> on success, and <see langword="false"/> otherwise</remarks>
+    IAsyncEnumerable<(TResult Result, TEntity Entity)> UpdateAsyncStream(IEnumerable<TKey> keys, IEnumerable<TValue> manipulativeValues, CancellationToken cancellationToken = new());
 
     /// <summary>
     /// An attempt at a relatively stable deletion operation that respects the given <paramref name="key"/>.
@@ -48,7 +51,8 @@ public interface IKeyedDataOperations<in TKey, in TValue, TEntity, TResult> : IE
     /// <param name="key">The key object that we are aiming to check against</param>
     /// <param name="cancellationToken"><inheritdoc cref="CancellationToken"/></param>
     /// <returns><see cref="Tuple{T1, T2}"/>: A coupling of the result of the operation <typeparamref name="TResult"/>, and the completed object,<typeparamref name="TEntity"/></returns>
-    ValueTask<(TResult, TEntity)> DeleteAsync(TKey key, CancellationToken cancellationToken = new());
+    /// <remarks><typeparamref name="TResult" /> will typically be a <see cref="Boolean"/> value, returning <see langword="true"/> on success, and <see langword="false"/> otherwise</remarks>
+    ValueTask<(TResult Result, TEntity Entity)> DeleteAsync(TKey key, CancellationToken cancellationToken = new());
 
     /// <summary>
     /// An attempt at a relatively stable deletion operation that aims to eliminate entities that match the provided <paramref name="keys"/>, and still allow individual error/logical handlings on the calling side
@@ -56,5 +60,6 @@ public interface IKeyedDataOperations<in TKey, in TValue, TEntity, TResult> : IE
     /// <param name="keys">THe key objects we are aiming to remove</param>
     /// <param name="cancellationToken"><inheritdoc cref="CancellationToken"/></param>
     /// <returns><see cref="IAsyncEnumerable{T}"/>: <see cref="Tuple{T1, T2}"/>: A streaming coupling of the result of the operation <typeparamref name="TResult"/>, and the completed object,<typeparamref name="TEntity"/></returns>
-    IAsyncEnumerable<(TResult, TEntity)> DeleteAsyncStream(IEnumerable<TKey> keys, CancellationToken cancellationToken = new());
+    /// <remarks><typeparamref name="TResult" /> will typically be a <see cref="Boolean"/> value, returning <see langword="true"/> on success, and <see langword="false"/> otherwise</remarks>
+    IAsyncEnumerable<(TResult Result, TEntity Entity)> DeleteAsyncStream(IEnumerable<TKey> keys, CancellationToken cancellationToken = new());
 }

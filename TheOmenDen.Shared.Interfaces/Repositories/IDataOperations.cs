@@ -16,6 +16,7 @@ public interface IDataOperations<T, TResult> : IRepository<T>, IStreamingReposit
     /// <param name="cancellationToken"><inheritdoc cref="CancellationToken"/></param>
     /// <typeparam name="T">Type of entity to add</typeparam>
     /// <returns><typeparamref name="TResult"/></returns>
+    /// <remarks><typeparamref name="TResult" /> will typically be a <see cref="Boolean"/> value, returning <see langword="true"/> on success, and <see langword="false"/> otherwise</remarks>
     ValueTask<TResult> AddAsync(T entity, CancellationToken cancellationToken = default);
 
     /// <summary>
@@ -24,6 +25,7 @@ public interface IDataOperations<T, TResult> : IRepository<T>, IStreamingReposit
     /// <param name="entities">The entities that we want to add</param>
     /// <param name="cancellationToken"><inheritdoc cref="CancellationToken"/></param>
     /// <returns><typeparamref name="TResult"/></returns>
+    /// <remarks><typeparamref name="TResult" /> will typically be a <see cref="Boolean"/> value, returning <see langword="true"/> on success, and <see langword="false"/> otherwise</remarks>
     ValueTask<TResult> AddManyAsync(IEnumerable<T> entities, CancellationToken cancellationToken = default);
 
     /// <summary>
@@ -32,6 +34,7 @@ public interface IDataOperations<T, TResult> : IRepository<T>, IStreamingReposit
     /// <param name="entity">The entity we want to update</param>
     /// <param name="cancellationToken"><inheritdoc cref="CancellationToken"/></param>
     /// <returns><typeparamref name="TResult"/></returns>
+    /// <remarks><typeparamref name="TResult" /> will typically be a <see cref="Boolean"/> value, returning <see langword="true"/> on success, and <see langword="false"/> otherwise</remarks>
     ValueTask<TResult> UpdateAsync(T entity, CancellationToken cancellationToken = default);
 
     /// <summary>
@@ -40,6 +43,7 @@ public interface IDataOperations<T, TResult> : IRepository<T>, IStreamingReposit
     /// <param name="entities">The entities we want to update</param>
     /// <param name="cancellationToken"><inheritdoc cref="CancellationToken"/></param>
     /// <returns><typeparamref name="TResult"/></returns>
+    /// <remarks><typeparamref name="TResult" /> will typically be a <see cref="Boolean"/> value, returning <see langword="true"/> on success, and <see langword="false"/> otherwise</remarks>
     ValueTask<TResult> UpdateManyAsync(IEnumerable<T> entities, CancellationToken cancellationToken = default);
 
     /// <summary>
@@ -48,6 +52,7 @@ public interface IDataOperations<T, TResult> : IRepository<T>, IStreamingReposit
     /// <param name="entity">The entity we want to delete</param>
     /// <param name="cancellationToken"><inheritdoc cref="CancellationToken"/></param>
     /// <returns><typeparamref name="TResult"/></returns>
+    /// <remarks><typeparamref name="TResult" /> will typically be a <see cref="Boolean"/> value, returning <see langword="true"/> on success, and <see langword="false"/> otherwise</remarks>
     ValueTask<TResult> DeleteAsync(T entity, CancellationToken cancellationToken = default);
 
     /// <summary>
@@ -56,5 +61,6 @@ public interface IDataOperations<T, TResult> : IRepository<T>, IStreamingReposit
     /// <param name="entities">The entities we want to delete</param>
     /// <param name="cancellationToken"><inheritdoc cref="CancellationToken"/></param>
     /// <returns><typeparamref name="TResult"/></returns>
+    /// <remarks><typeparamref name="TResult" /> will typically be a <see cref="Boolean"/> value, returning <see langword="true"/> on success, and <see langword="false"/> otherwise</remarks>
     ValueTask<TResult> DeleteManyAsync(IEnumerable<T> entities, CancellationToken cancellationToken = default);
 }
