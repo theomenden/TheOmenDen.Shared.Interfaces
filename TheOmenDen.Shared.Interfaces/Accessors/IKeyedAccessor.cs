@@ -1,36 +1,37 @@
-﻿namespace TheOmenDen.Shared.Interfaces.Accessors;
+﻿using IEntityKey = TheOmenDen.Shared.Interfaces.Models.IEntityKey;
+using IEntity = TheOmenDen.Shared.Interfaces.Models.IEntity;
+using TheOmenDen.Shared.Interfaces.Models;
+namespace TheOmenDen.Shared.Interfaces.Accessors;
 /// <summary>
 /// Defines a set of methods for retrieving an entity by a provided key
 /// </summary>
 /// <typeparam name="TKey">The key to search with</typeparam>
 /// <typeparam name="TResult">The operation result</typeparam>
-/// <typeparam name="TEntity">The entity we want to return</typeparam>
-public interface IKeyedAccessor<in TKey, TResult, TEntity> where TKey : IEntityKey
+public interface IKeyedAccessor<in TKey, TResult>
+    where TKey : IEntityKey
+    where TResult : IEntity, IEntity<TResult>
 {
     /// <summary>
-    /// Returns a single <typeparamref name="TEntity"/> based off of the provided <typeparamref name="TKey"/> <paramref name="key"/>
+    /// Returns a single <typeparamref name="TResult"/> based off of the provided <typeparamref name="TKey"/> <paramref name="key"/>
     /// </summary>
     /// <param name="key">The key we're using</param>
     /// <param name="cancellationToken"><inheritdoc cref="CancellationToken"/></param>
-    /// <returns>A coupling of the <typeparamref name="TResult"/> and <typeparamref name="TKey"/></returns>
-    /// <remarks><typeparamref name="TResult" /> will typically be a <see cref="Boolean"/> value, returning <see langword="true"/> on success, and <see langword="false"/> otherwise</remarks>
-    ValueTask<(TResult Result , TEntity Entity)> GetByKeyAsync(TKey key, CancellationToken cancellationToken = new());
+    /// <returns>A <typeparamref name="TResult"/></returns>
+    ValueTask<TResult> GetByKeyAsync(TKey key, CancellationToken cancellationToken = new());
 
     /// <summary>
-    /// Returns a collection of <typeparamref name="TEntity"/>s that match the specified properties given by the <typeparamref name="TKey"/>  <paramref name="key"/>
+    /// Returns a collection of <typeparamref name="TResult"/>s that match the specified properties given by the <typeparamref name="TKey"/>  <paramref name="key"/>
     /// </summary>
     /// <param name="key">The key we're using</param>
     /// <param name="cancellationToken"><inheritdoc cref="CancellationToken"/></param>
-    /// <returns>A coupling of the <typeparamref name="TResult"/> and <typeparamref name="TKey"/></returns>
-    /// <remarks><typeparamref name="TResult" /> will typically be a <see cref="Boolean"/> value, returning <see langword="true"/> on success, and <see langword="false"/> otherwise</remarks>
-    ValueTask<(TResult Result, IEnumerable<TEntity> Entities)> GetAllAsync(TKey key, CancellationToken cancellationToken = new());
+    /// <returns>A <typeparamref name="TResult"/></returns>
+    ValueTask<IEnumerable<TResult>> GetAllAsync(TKey key, CancellationToken cancellationToken = new());
 
     /// <summary>
-    /// Returns a collection of <typeparamref name="TEntity"/> that match the specified properties given by the provided set of <typeparamref name="TKey"/>  <paramref name="keys"/>
+    /// Returns a collection of <typeparamref name="TResult"/> that match the specified properties given by the provided set of <typeparamref name="TKey"/>  <paramref name="keys"/>
     /// </summary>
     /// <param name="keys">The key we're using</param>
     /// <param name="cancellationToken"><inheritdoc cref="CancellationToken"/></param>
-    /// <returns>A coupling of the <typeparamref name="TResult"/> and <typeparamref name="TKey"/></returns>
-    /// <remarks><typeparamref name="TResult" /> will typically be a <see cref="Boolean"/> value, returning <see langword="true"/> on success, and <see langword="false"/> otherwise</remarks>
-    ValueTask<(TResult Result, IEnumerable<TEntity> Entities)> GetAllThatMatchKeysAsync(IEnumerable<TKey> keys, CancellationToken cancellationToken = new());
+    /// <returns>A <typeparamref name="TResult"/></returns>
+    ValueTask<IEnumerable<TResult>> GetAllThatMatchKeysAsync(IEnumerable<TKey> keys, CancellationToken cancellationToken = new());
 }
