@@ -1,7 +1,4 @@
-﻿using TheOmenDen.Shared.Interfaces.Models;
-using IEntityKey = TheOmenDen.Shared.Interfaces.Models.IEntityKey;
-using IEntity = TheOmenDen.Shared.Interfaces.Models.IEntity;
-namespace TheOmenDen.Shared.Interfaces.Accessors;
+﻿namespace TheOmenDen.Shared.Interfaces.Accessors;
 
 /// <summary>
 /// Defines asynchronous streaming methods to allow retrieval of entities matching a supplied key

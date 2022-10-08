@@ -1,6 +1,4 @@
 ﻿using TheOmenDen.Shared.Utilities;
-using IEntity = TheOmenDen.Shared.Interfaces.Models.IEntity;
-using IEntityKey = TheOmenDen.Shared.Interfaces.Models.IEntityKey;
 
 namespace TheOmenDen.Shared.Interfaces.Services;
 
