@@ -1,8 +1,4 @@
-﻿using TheOmenDen.Shared.Interfaces.Models;
-using IEntityKey = TheOmenDen.Shared.Interfaces.Models.IEntityKey;
-using IEntity = TheOmenDen.Shared.Interfaces.Models.IEntity;
-namespace TheOmenDen.Shared.Interfaces.Repositories;
-
+﻿namespace TheOmenDen.Shared.Interfaces.Repositories;
 /// <summary>
 /// <para>This interface aims to define the basic Create, Update, and Delete functionality for entities within the domain</para>
 /// <para> By manipulating our results from a given store, a return <see cref="ValueTuple{T1, T2}"/> is possible to reflect the changes that were made</para>

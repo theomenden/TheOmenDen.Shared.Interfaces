@@ -1,7 +1,4 @@
-﻿using IEntityKey = TheOmenDen.Shared.Interfaces.Models.IEntityKey;
-using IEntity = TheOmenDen.Shared.Interfaces.Models.IEntity;
-using TheOmenDen.Shared.Interfaces.Models;
-namespace TheOmenDen.Shared.Interfaces.Accessors;
+﻿namespace TheOmenDen.Shared.Interfaces.Accessors;
 /// <summary>
 /// Defines a set of methods for retrieving an entity by a provided key
 /// </summary>

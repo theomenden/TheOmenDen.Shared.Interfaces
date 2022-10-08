@@ -1,7 +1,4 @@
-﻿using TheOmenDen.Shared.Interfaces.Models;
-using IEntity = TheOmenDen.Shared.Models.IEntity;
-
-namespace TheOmenDen.Shared.Interfaces.Repositories;
+﻿namespace TheOmenDen.Shared.Interfaces.Repositories;
 /// <summary>
 /// <para>Defines a set of Add, Update, and delete methods for the type <typeparamref name="T"/></para>
 /// <inheritdoc cref="IRepository{T}"/>
