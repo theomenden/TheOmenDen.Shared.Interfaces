@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFramework>net6.0</TargetFramework>
+		<TargetFrameworks>net6.0;net7.0</TargetFrameworks>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>enable</Nullable>
 		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
@@ -25,24 +25,13 @@
 		<IncludeSymbols>True</IncludeSymbols>
 		<SymbolPackageFormat>snupkg</SymbolPackageFormat>
 	</PropertyGroup>
-
 	<ItemGroup>
-		<Content Include="omenden-jsonapi.ico" />
-	</ItemGroup>
-
-	<ItemGroup>
-		<None Include="..\omen-den-jsonapi.png">
-			<Pack>True</Pack>
-			<PackagePath>\</PackagePath>
-		</None>
-		<None Include="..\README.md">
-		  <Pack>True</Pack>
-		  <PackagePath>\</PackagePath>
-		</None>
+		<None Include="..\omen-den-jsonapi.png" Pack="True" PackagePath="\" />
+		<None Include="..\README.md" Pack="True" PackagePath="\" />
 	</ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="TheOmenDen.Shared" Version="2022.10.8.41" />
+    <PackageReference Include="TheOmenDen.Shared" Version="2022.11.13.2149" />
   </ItemGroup>
 
 	<Target Name="SetPackageVersion" DependsOnTargets="Build">

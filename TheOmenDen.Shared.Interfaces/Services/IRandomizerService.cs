@@ -3,7 +3,7 @@
 namespace TheOmenDen.Shared.Interfaces.Services;
 
 /// <summary>
-/// <para>The purpose of this interface is to provide a way for randomizing elements by utlizing the <see cref="ThreadSafeRandom"/></para>
+/// <para>The purpose of this interface is to provide a way for randomizing elements by utilizing the <see cref="ThreadSafeRandom"/></para>
 /// <inheritdoc cref="IDisposable"/>
 /// <inheritdoc cref="IAsyncDisposable"/>
 /// </summary>
