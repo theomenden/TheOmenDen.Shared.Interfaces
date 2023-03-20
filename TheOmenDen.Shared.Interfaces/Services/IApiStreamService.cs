@@ -3,9 +3,7 @@
 /// <summary>
 /// Marker interface for DI containers
 /// </summary>
-public interface IApiStreamService
-{
-}
+public interface IApiStreamService {}
 
 /// <summary>
 /// Contains Methods for streaming data back from an API that supports <see cref="IAsyncEnumerable{T}"/>, or long-running tasks

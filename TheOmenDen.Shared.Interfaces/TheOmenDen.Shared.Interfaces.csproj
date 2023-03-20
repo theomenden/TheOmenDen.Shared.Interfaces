@@ -16,7 +16,6 @@
 		<PackageIcon>omen-den-jsonapi.png</PackageIcon>
 		<PackageTags>csharp;dotnet6;dotnet;dotnetcore;interfaces;library</PackageTags>
 		<PackageReleaseNotes>Provides the basis for interfaces for various purposes</PackageReleaseNotes>
-		<ApplicationIcon>omenden-jsonapi.ico</ApplicationIcon>
 		<RepositoryUrl>https://github.com/theomenden/TheOmenDen.Shared.Interfaces</RepositoryUrl>
 		<PackageProjectUrl>https://github.com/theomenden/TheOmenDen.Shared.Interfaces</PackageProjectUrl>
 		<PackageReadmeFile>README.md</PackageReadmeFile>
@@ -31,14 +30,14 @@
 	</ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="TheOmenDen.Shared" Version="2022.11.13.2149" />
+    <PackageReference Include="TheOmenDen.Shared" Version="2023.3.17.2238" />
   </ItemGroup>
 
 	<Target Name="SetPackageVersion" DependsOnTargets="Build">
 		<PropertyGroup>
-			<PackageVersion>$([System.DateTime]::Now.ToString("1.MM.dd.HHss"))</PackageVersion>
-			<AssemblyVersion>$([System.DateTime]::Now.ToString("1.MM.dd.HHss"))</AssemblyVersion>
-			<FileVersion>$([System.DateTime]::Now.ToString("1.MM.dd.HHss"))</FileVersion>
+			<PackageVersion>$([System.DateTime]::Now.ToString("2.MM.dd.HHss"))</PackageVersion>
+			<AssemblyVersion>$([System.DateTime]::Now.ToString("2.MM.dd.HHss"))</AssemblyVersion>
+			<FileVersion>$([System.DateTime]::Now.ToString("2.MM.dd.HHss"))</FileVersion>
 		</PropertyGroup>
 	</Target>
 </Project>

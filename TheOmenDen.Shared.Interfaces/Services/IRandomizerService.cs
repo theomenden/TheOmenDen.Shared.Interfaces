@@ -19,8 +19,8 @@ public interface IRandomizerService<T>: IEnumerable<T>, IDisposable, IAsyncDispo
     /// <summary>
     /// Using a pseudo-random provider (for example <see cref="ThreadSafeRandom"/> -
     /// </summary>
-    /// <param name="source"></param>
-    /// <param name="random"></param>
-    /// <returns></returns>
+    /// <param name="source">Provided (assumed) ordered enumerable</param>
+    /// <param name="random">Provided <see cref="Random"/></param>
+    /// <returns>A randomized copy of the provided <paramref name="source" /></returns>
     IEnumerable<T> Randomize(IEnumerable<T> source, Random random);
 }

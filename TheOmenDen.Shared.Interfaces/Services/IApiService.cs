@@ -3,10 +3,7 @@
 /// <summary>
 /// Marker Interface for DI registrations
 /// </summary>
-public interface IApiService
-{
-
-}
+public interface IApiService {}
 
 
 /// <summary>

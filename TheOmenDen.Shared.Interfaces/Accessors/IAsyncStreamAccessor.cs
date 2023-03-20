@@ -1,4 +1,5 @@
 ﻿using System.Linq.Expressions;
+using TheOmenDen.Shared.Specifications;
 
 namespace TheOmenDen.Shared.Interfaces.Accessors;
 /// <summary>
@@ -14,7 +15,6 @@ public interface IAsyncStreamAccessor<T>
     /// <param name="cancellationToken"><inheritdoc cref="CancellationToken"/></param>
     /// <returns>An asynchronous stream of the entities (<see cref="IAsyncEnumerable{T}"/>) of type <typeparamref name="T"/></returns>
     IAsyncEnumerable<T> GetAllAsAsyncStream(CancellationToken cancellationToken = new());
-
     /// <summary>
     /// Retrieves all entities of type <typeparam name="T"></typeparam> that match the given <param name="predicate"></param>
     /// </summary>
@@ -22,4 +22,11 @@ public interface IAsyncStreamAccessor<T>
     /// <param name="cancellationToken"><inheritdoc cref="CancellationToken"/></param>
     /// <returns>An asynchronous stream of the entities (<see cref="IAsyncEnumerable{T}"/>) of type <typeparamref name="T"/></returns>
     IAsyncEnumerable<T> GetAllThatMatchAsAsyncStream(Expression<Func<T, bool>> predicate, CancellationToken cancellationToken = new());
+    /// <summary>
+    /// Retrieves all entities of type <typeparam name="T"></typeparam> that satisfy the given <param name="specification"></param>
+    /// </summary>
+    /// <param name="specification">The specification that we're trying to satisfy</param>
+    /// <param name="cancellationToken"></param>
+    /// <returns>An asynchronous stream of the entities (<see cref="IAsyncEnumerable{T}"/>) of type <typeparamref name="T"/></returns>
+    IAsyncEnumerable<T> GetAllThatMatchAsAsyncStream(Specification<T>  specification, CancellationToken cancellationToken = new());
 }
