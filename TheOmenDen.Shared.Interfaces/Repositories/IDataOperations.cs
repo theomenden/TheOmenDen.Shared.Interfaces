@@ -17,7 +17,7 @@ public interface IDataOperations<in T, TResult> : IRepository<TResult>, IStreami
     /// <typeparam name="T">Type of entity to add</typeparam>
     /// <returns>A resulting object: <typeparamref name="TResult"/></returns>
     /// <remarks><typeparamref name="TResult" /> will typically be a <see cref="Boolean"/> value, returning <see langword="true"/> on success, and <see langword="false"/> otherwise</remarks>
-    Task<TResult> AddAsync(T entity, CancellationToken cancellationToken = default);
+    ValueTask<TResult> AddAsync(T entity, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Adds the specified <paramref name="entities"/> of type <typeparamref name="T"/> to an established store 
@@ -26,7 +26,7 @@ public interface IDataOperations<in T, TResult> : IRepository<TResult>, IStreami
     /// <param name="cancellationToken"><inheritdoc cref="CancellationToken"/></param>
     /// <returns>A resulting object: <typeparamref name="TResult"/></returns>
     /// <remarks><typeparamref name="TResult" /> will typically be a <see cref="Boolean"/> value, returning <see langword="true"/> on success, and <see langword="false"/> otherwise</remarks>
-    Task<TResult> AddManyAsync(IEnumerable<T> entities, CancellationToken cancellationToken = default);
+    ValueTask<TResult> AddManyAsync(IEnumerable<T> entities, CancellationToken cancellationToken = default);
 
 
     /// <summary>
@@ -36,7 +36,7 @@ public interface IDataOperations<in T, TResult> : IRepository<TResult>, IStreami
     /// <param name="cancellationToken"><inheritdoc cref="CancellationToken"/></param>
     /// <returns>A resulting set of objects: <typeparamref name="TResult"/></returns>
     /// <remarks><typeparamref name="TResult" /> will typically be a <see cref="Boolean"/> value, returning <see langword="true"/> on success, and <see langword="false"/> otherwise</remarks>
-    Task<IEnumerable<TResult>> AddManyAsDistributedAsync(IEnumerable<T> entities, CancellationToken cancellationToken = default);
+    ValueTask<IEnumerable<TResult>> AddManyAsDistributedAsync(IEnumerable<T> entities, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Updates the provided <paramref name="entity"/> of type <typeparamref name="T"/> in an established store
@@ -45,7 +45,7 @@ public interface IDataOperations<in T, TResult> : IRepository<TResult>, IStreami
     /// <param name="cancellationToken"><inheritdoc cref="CancellationToken"/></param>
     /// <returns>A resulting object: <typeparamref name="TResult"/></returns>
     /// <remarks><typeparamref name="TResult" /> will typically be a <see cref="Boolean"/> value, returning <see langword="true"/> on success, and <see langword="false"/> otherwise</remarks>
-    Task<TResult> UpdateAsync(T entity, CancellationToken cancellationToken = new());
+    ValueTask<TResult> UpdateAsync(T entity, CancellationToken cancellationToken = new());
 
     /// <summary>
     /// Updates the provided <paramref name="entities"/> of type <typeparamref name="T"/> in an established store
@@ -54,9 +54,9 @@ public interface IDataOperations<in T, TResult> : IRepository<TResult>, IStreami
     /// <param name="cancellationToken"><inheritdoc cref="CancellationToken"/></param>
     /// <returns>A resulting object: <typeparamref name="TResult"/></returns>
     /// <remarks><typeparamref name="TResult" /> will typically be a <see cref="Boolean"/> value, returning <see langword="true"/> on success, and <see langword="false"/> otherwise</remarks>
-    Task<TResult> UpdateManyAsync(IEnumerable<T> entities, CancellationToken cancellationToken = default);
+    ValueTask<TResult> UpdateManyAsync(IEnumerable<T> entities, CancellationToken cancellationToken = default);
 
-    Task<IEnumerable<TResult>> UpdateManyAsDistributed(IEnumerable<T> entities, CancellationToken cancellationToken = new());
+    ValueTask<IEnumerable<TResult>> UpdateManyAsDistributed(IEnumerable<T> entities, CancellationToken cancellationToken = new());
 
     /// <summary>
     /// Deletes the provided <paramref name="entity"/> from an established store
@@ -65,7 +65,7 @@ public interface IDataOperations<in T, TResult> : IRepository<TResult>, IStreami
     /// <param name="cancellationToken"><inheritdoc cref="CancellationToken"/></param>
     /// <returns>A resulting object: <typeparamref name="TResult"/></returns>
     /// <remarks><typeparamref name="TResult" /> will typically be a <see cref="Boolean"/> value, returning <see langword="true"/> on success, and <see langword="false"/> otherwise</remarks>
-    Task<TResult> DeleteAsync(T entity, CancellationToken cancellationToken = default);
+    ValueTask<TResult> DeleteAsync(T entity, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Deletes the provided <paramref name="entities"/> from an established store
@@ -74,5 +74,5 @@ public interface IDataOperations<in T, TResult> : IRepository<TResult>, IStreami
     /// <param name="cancellationToken"><inheritdoc cref="CancellationToken"/></param>
     /// <returns>A resulting object: <typeparamref name="TResult"/></returns>
     /// <remarks><typeparamref name="TResult" /> will typically be a <see cref="Boolean"/> value, returning <see langword="true"/> on success, and <see langword="false"/> otherwise</remarks>
-    Task<TResult> DeleteManyAsync(IEnumerable<T> entities, CancellationToken cancellationToken = default);
+    ValueTask<TResult> DeleteManyAsync(IEnumerable<T> entities, CancellationToken cancellationToken = default);
 }

@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFrameworks>net6.0;net7.0</TargetFrameworks>
+		<TargetFrameworks>net6.0;net7.0;net8.0</TargetFrameworks>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>enable</Nullable>
 		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
@@ -29,9 +29,9 @@
 		<None Include="..\README.md" Pack="True" PackagePath="\" />
 	</ItemGroup>
 
-  <ItemGroup>
-    <PackageReference Include="TheOmenDen.Shared" Version="2023.3.25.112" />
-  </ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="TheOmenDen.Shared" Version="2023.11.27.49" />
+	</ItemGroup>
 
 	<Target Name="SetPackageVersion" DependsOnTargets="Build">
 		<PropertyGroup>

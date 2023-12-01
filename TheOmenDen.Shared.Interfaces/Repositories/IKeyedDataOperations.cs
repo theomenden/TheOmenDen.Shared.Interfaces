@@ -12,7 +12,7 @@
 /// <remarks>Not meant to be compatible with <see cref="IDataOperations{T, TResult}"/></remarks>
 public interface IKeyedDataOperations<in TKey, in TValue, TResultingValue> : IEnumerable<TResultingValue>, IAsyncEnumerable<TResultingValue>
   where TKey : IEntityKey
-{       
+{
     /// <summary>
     /// An attempt at a relatively stable insertion operation that respects the given <paramref name="key"/>, and allows for underlying <paramref name="manipulativeValues"/> to be distinguished from the originating key.
     /// </summary>
@@ -21,7 +21,7 @@ public interface IKeyedDataOperations<in TKey, in TValue, TResultingValue> : IEn
     /// <param name="cancellationToken"><inheritdoc cref="CancellationToken"/></param>
     /// <returns>A result of the operation <typeparamref name="TResultingValue"/></returns>
     /// <remarks><typeparamref name="TResultingValue" /> will typically be a <see cref="Boolean"/> value, returning <see langword="true"/> on success, and <see langword="false"/> otherwise</remarks>
-    Task<TResultingValue> AddAsync(TKey key, TValue manipulativeValues, CancellationToken cancellationToken = new());
+    ValueTask<TResultingValue> AddAsync(TKey key, TValue manipulativeValues, CancellationToken cancellationToken = new());
 
     /// <summary>
     /// An attempt at a relatively stable update operation that respects the given <paramref name="key"/>, and allows for underlying <paramref name="manipulativeValues"/> to be distinguished from the originating key.
@@ -31,7 +31,7 @@ public interface IKeyedDataOperations<in TKey, in TValue, TResultingValue> : IEn
     /// <param name="cancellationToken"><inheritdoc cref="CancellationToken"/></param>
     /// <returns>A result of the operation <typeparamref name="TResultingValue"/></returns>
     /// <remarks><typeparamref name="TResultingValue" /> will typically be a <see cref="Boolean"/> value, returning <see langword="true"/> on success, and <see langword="false"/> otherwise</remarks>
-    Task<TResultingValue> UpdateAsync(TKey key, TValue manipulativeValues, CancellationToken cancellationToken = new());
+    ValueTask<TResultingValue> UpdateAsync(TKey key, TValue manipulativeValues, CancellationToken cancellationToken = new());
 
     /// <summary>
     /// An attempt at a relatively stable update operation that respects the provided <paramref name="keys"/> and allows for logic to take place with the underlying <paramref name="manipulativeValues"/> to be distinguished from the originating keys.
@@ -50,7 +50,7 @@ public interface IKeyedDataOperations<in TKey, in TValue, TResultingValue> : IEn
     /// <param name="cancellationToken"><inheritdoc cref="CancellationToken"/></param>
     /// <returns>The result of the operation <typeparamref name="TResultingValue"/></returns>
     /// <remarks><typeparamref name="TResultingValue" /> will typically be a <see cref="Boolean"/> value, returning <see langword="true"/> on success, and <see langword="false"/> otherwise</remarks>
-    Task<TResultingValue> DeleteAsync(TKey key, CancellationToken cancellationToken = new());
+    ValueTask<TResultingValue> DeleteAsync(TKey key, CancellationToken cancellationToken = new());
 
     /// <summary>
     /// An attempt at a relatively stable deletion operation that aims to eliminate entities that match the provided <paramref name="keys"/>, and still allow individual error/logical handlings on the calling side
